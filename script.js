@@ -1,16 +1,17 @@
 let allButtons = document.querySelectorAll('.drum');
 
 for (let i = 0; i < allButtons.length; i++) {
-    allButtons[i].addEventListener('click', function() {
+    allButtons[i].addEventListener('click', function () {
         let btnInnerHTML = this.innerHTML;
-
-        playSound(btnInnerHTML)
+        playSound(btnInnerHTML);
+        btnAnimation(btnInnerHTML);
     })
 }
 
 
-document.addEventListener('keydown', function(event) {
-    playSound(event.key)
+document.addEventListener('keydown', function (event) {
+    playSound(event.key);
+    btnAnimation(event.key);
 })
 
 
@@ -48,5 +49,15 @@ function playSound(key) {
             console.log('invalid button input');
             break;
     }
-}
+};
 
+function btnAnimation(currentKey) {
+    let activeBtn = document.querySelector('.' + currentKey);
+    activeBtn.classList.add('pressed');
+    
+    setTimeout(function() {
+        activeBtn.classList.remove('pressed');
+    }, 100)
+};
+
+// `.${currentKey}`
