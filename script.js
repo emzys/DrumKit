@@ -59,5 +59,3 @@ function btnAnimation(currentKey) {
         activeBtn.classList.remove('pressed');
     }, 100)
 };
-
-// `.${currentKey}`
